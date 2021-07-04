@@ -1,0 +1,27 @@
+﻿//joint collection table
+
+CREATE TABLE [dbo].[Join_collection] (
+    [Q_Id] INT NULL,
+    [S_Id] INT NULL,
+    CONSTRAINT [FK_Table_ToTable] FOREIGN KEY ([Q_Id]) REFERENCES [dbo].[Question] ([Q_Id]),
+    CONSTRAINT [FK_Table_ToTable_1] FOREIGN KEY ([S_Id]) REFERENCES [dbo].[Story] ([S_Id])
+);
+
+//question table
+
+CREATE TABLE [dbo].[Question] (
+    [Q_Id]     INT           IDENTITY (1, 1) NOT NULL,
+    [Question] VARCHAR (MAX) NULL,
+    [Story_Id] INT           NULL,
+    PRIMARY KEY CLUSTERED ([Q_Id] ASC),
+    CONSTRAINT [FK_Question_ToTable] FOREIGN KEY ([Story_Id]) REFERENCES [dbo].[Story] ([S_Id])
+);
+
+//story table
+
+CREATE TABLE [dbo].[Story] (
+    [S_Id]  INT           IDENTITY (1, 1) NOT NULL,
+    [Story] VARCHAR (MAX) NULL,
+    PRIMARY KEY CLUSTERED ([S_Id] ASC)
+);
+
